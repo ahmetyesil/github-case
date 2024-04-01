@@ -1,4 +1,4 @@
-import { GET_SETTINGS, GET_ALL_FETCH_FAIL } from "../types";
+import { GET_SETTINGS } from "../types";
 
 export const settings_r = (settingsData: object) => async (dispatch: any) => {
   if (settingsData) {
