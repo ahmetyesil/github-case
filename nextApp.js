@@ -1,7 +1,7 @@
 const express = require("express");
 const next = require("next");
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3007;
 
 const app = next({dev: false});
 const handle = app.getRequestHandler();
