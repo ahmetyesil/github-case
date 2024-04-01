@@ -6,6 +6,7 @@
     "dev": "next dev",
     "start": "nodemon nextApp.js",
     "lint": "next lint",
+    "build": "next build",
     "build:development": "env-cmd -f ./env/.env.development  next build",
     "build:production": "env-cmd -f ./env/.env.production  next build",
     "build:internal": "env-cmd -f ./env/.env.internal  next build  ",
