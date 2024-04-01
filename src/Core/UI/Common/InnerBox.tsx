@@ -1,12 +1,6 @@
 import * as React from "react";
-import { Header, Footer } from "@/Core/index";
-import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/Redux/reducers";
-import {CSSProperties, useEffect} from "react";
-import { useMutateApi } from "@/Hooks/index";
-import { loginRedux, logoutRedux } from "@/Redux/actions";
-import DashboardHeader from "@/Composite/DashboardHeader";
+import {CSSProperties} from "react";
+
 
 export type IProps = {
   children: React.ReactNode | JSX.Element | null | boolean;
