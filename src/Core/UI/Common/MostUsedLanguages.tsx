@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { formatBytes } from "../../../Utils/Formatter";
+import {Col, message} from "antd";
+import Loading from "@/UI/Common/Loading";
+import * as React from "react";
 
 interface LanguageStats {
   [key: string]: number;
@@ -19,6 +22,7 @@ interface UserRepo {
 }
 
 const MostUsedLanguages: React.FC<{ username: string }> = ({ username }) => {
+  const [messageApi, contextHolder] = message.useMessage();
   const [loading, setLoading] = useState<boolean>(false);
 
   const [mostUsedLanguages, setMostUsedLanguages] = useState<{ language: string; size: string }[]>([]);
@@ -45,8 +49,11 @@ const MostUsedLanguages: React.FC<{ username: string }> = ({ username }) => {
       }
 
       return userRepos;
-    } catch (error) {
-      console.error('Error:', error);
+    } catch (error:any) {
+      messageApi.open({
+        type: 'error',
+        content: error.message,
+      });
       return [];
     }
   }
@@ -74,9 +81,12 @@ const MostUsedLanguages: React.FC<{ username: string }> = ({ username }) => {
 
       setMostUsedLanguages(top3Languages);
       setLoading(false);
-    } catch (error) {
+    } catch (error:any) {
       setLoading(false);
-      console.error('Error', error);
+      messageApi.open({
+        type: 'error',
+        content: error.message,
+      });
     }
   };
 
@@ -86,7 +96,15 @@ const MostUsedLanguages: React.FC<{ username: string }> = ({ username }) => {
 
   return (
     <div>
-      {loading && <div className="text-center">Yükleniyor...</div>}
+      {
+          loading && <div className="flex justify-center">
+            <Loading/>
+          </div>
+      }
+      {!loading && mostUsedLanguages.length === 0 && <div className="flex justify-center">
+         <span>Liste boş</span>
+      </div>}
+      {contextHolder}
       <ul className="flex justify-center">
         {mostUsedLanguages.map(({ language, size }, index) => (
           <li key={index} className="text-center p-5">

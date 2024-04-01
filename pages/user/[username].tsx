@@ -9,7 +9,9 @@ import { UserDetailModel } from "@/Core/Models/User";
 import UserDetailCard from "@/UI/User/UserDetailCard";
 import { useRouter } from "next/router";
 import MostUsedLanguages from "@/UI/Common/MostUsedLanguages";
+import {message} from "antd";
 const UserDetailPage: NextPage = () => {
+  const [messageApi, contextHolder] = message.useMessage();
   const router = useRouter();
   const { username } = router.query;
   const [user, setUser] = useState<UserDetailModel | null>(null);
@@ -17,7 +19,11 @@ const UserDetailPage: NextPage = () => {
     try {
       const response = await axios.get(`https://api.github.com/users/${username}`);
       setUser(response.data);
-    } catch (error) {
+    } catch (error:any) {
+      messageApi.open({
+        type: 'error',
+        content: error.message,
+      });
     }
   };
 
@@ -38,6 +44,7 @@ const UserDetailPage: NextPage = () => {
               </div>
 
               <div className="mt-10">
+                {contextHolder}
                 <MostUsedLanguages username={username as string} />
               </div>
             </Container>

@@ -150,7 +150,7 @@ module.exports = {
             },
         },
         animation: {
-            "spin-slow": "spin 3s ease-in-out infinite",
+            "spin-slow": "spin 2s ease-in-out infinite",
             radar: "waves 4s infinite ease",
             fade: "fadeOut 0.5s ease-in-out",
             ping: "ping 1s cubic-bezier(0, 0, 0.2, 1) infinite",
