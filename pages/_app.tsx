@@ -3,7 +3,7 @@ import wrapper from "@/Redux/store";
 import { Layout } from "@/Core/index";
 import "@/Public/styles/global.css";
 import {ParallaxProvider} from "react-scroll-parallax";
-
+import { AntdRegistry } from "@ant-design/nextjs-registry";
 
 
 
@@ -12,9 +12,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div className="flex h-full w-full">
         <ParallaxProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+            <AntdRegistry>
+                <Layout>
+                  <Component {...pageProps} />
+                 </Layout>
+            </AntdRegistry>
         </ParallaxProvider>
     </div>
   );
