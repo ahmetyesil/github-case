@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { formatBytes } from "../../../Utils/Formatter";
-import {Col, message} from "antd";
+import {message} from "antd";
 import Loading from "@/UI/Common/Loading";
 import * as React from "react";
 

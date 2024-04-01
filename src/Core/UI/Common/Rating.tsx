@@ -1,13 +1,5 @@
 import * as React from "react";
-import { Header, Footer } from "@/Core/index";
-import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/Redux/reducers";
-import {CSSProperties, useEffect} from "react";
-import { useMutateApi } from "@/Hooks/index";
-import { loginRedux, logoutRedux } from "@/Redux/actions";
-import DashboardHeader from "@/Composite/DashboardHeader";
-import {MdOutlineStar, MdOutlineStarBorder} from "react-icons/md";
+import {CSSProperties} from "react";
 import {GoStar, GoStarFill} from "react-icons/go";
 
 export type IProps = {
